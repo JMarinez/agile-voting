@@ -10,12 +10,8 @@ import org.junit.runner.RunWith;
 public final class DopNationalIdentificationNumberTests {
 	
 	/*
-	 * 1. null -> NullPointerException
-	 * 2. "   "-> IllegalArgumentException
-	 * 3. 12 digits -> IllegalArgumentException
 	 * 4. "68876gjg565" -> IllegalArgumentException
 	 * 5. "012345678910" -> IllegalArgumentException
-	 * 6. 10 digits -> IllegalArgumentException
 	 * */
 
   public static class ConstructorMessageTests {
@@ -41,6 +37,13 @@ public final class DopNationalIdentificationNumberTests {
 		String ten = "1234567890";
 		new DopNationalIdentificationNumber(ten);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void rejects_has_letters() {
+		String letters = "1234sdf8901";
+		new DopNationalIdentificationNumber(letters);
+	}
+	
 	
 	
   }

@@ -1,5 +1,7 @@
 package org.dominisoft.scrumdev.claro2020.domain;
 
+import java.util.regex.Pattern;
+
 /**
  * "Cedula" validator.
  */
@@ -19,6 +21,8 @@ public final class DopNationalIdentificationNumber {
     	throw new IllegalArgumentException("no especios en blanco");
     } else if (nin.length() < 11 || nin.length() > 11) {
     	throw new IllegalArgumentException("Cedula invalida.");
+    } else if (!Pattern.matches("[0-9]{10}", nin)) {
+    	throw new IllegalArgumentException("Cedula invalida.");
     }
 
     value = nin;
@@ -29,6 +33,8 @@ public final class DopNationalIdentificationNumber {
    * 
    * @return wrapped value.
    */
+  
+  
   public String getValue() {
     return value;
   }
