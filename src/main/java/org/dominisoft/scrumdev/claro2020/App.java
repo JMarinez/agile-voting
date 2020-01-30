@@ -1,5 +1,7 @@
 package org.dominisoft.scrumdev.claro2020;
 
+import org.dominisoft.scrumdev.claro2020.domain.DopNationalIdentificationNumber;
+
 import io.javalin.Javalin;
 
 /**
@@ -19,13 +21,13 @@ public final class App {
    */
   private App() {
   }
-
+  
   /**
    * Entry point.
    *
    * @param args Console arguments
    */
-  public static void main(final String[] args) {
+  public static void main(String[] args) {
     app = Javalin.create(config -> {
       config.addStaticFiles("/html");
     }).start(DEFAULT_PORT);
@@ -47,11 +49,14 @@ public final class App {
       ctx.contentType("text/html; charset=UTF-8");
       final String rawCedula = ctx.req.getParameter("id");
 
-      // DopNationalIdentificationNumber cedula2 = new
-      // DopNationalIdentificationNumber(rawCedula);
+       DopNationalIdentificationNumber cedula2 = new DopNationalIdentificationNumber(rawCedula);
 
       ctx.result(
-          String.format("TODO: Validate ID '%s' (Cédula)!!!", rawCedula));
+          String.format("TODO: Validate ID '%s' (Cédula)!!!", cedula2.getValue()));
+    });
+    
+    app.exception(Exception.class, (e, ctx) -> {
+        System.out.print("Fallo");
     });
 
     app.after(ctx -> {
