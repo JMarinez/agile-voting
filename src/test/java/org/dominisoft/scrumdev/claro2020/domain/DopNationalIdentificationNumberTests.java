@@ -36,6 +36,12 @@ public final class DopNationalIdentificationNumberTests {
 		new DopNationalIdentificationNumber(twelve);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void rejects_less_than_eleven() {
+		String ten = "1234567890";
+		new DopNationalIdentificationNumber(ten);
+	}
+	
 	
   }
 }
