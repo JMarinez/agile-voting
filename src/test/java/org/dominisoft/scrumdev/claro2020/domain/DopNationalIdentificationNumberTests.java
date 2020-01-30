@@ -44,6 +44,14 @@ public final class DopNationalIdentificationNumberTests {
 		new DopNationalIdentificationNumber(letters);
 	}
 	
+	/*012345678910*/
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void rejects_pattern_invalid() {
+		String pattern = "012345678910";
+		new DopNationalIdentificationNumber(pattern);
+	}
+	
 	
 	
   }

@@ -23,6 +23,8 @@ public final class DopNationalIdentificationNumber {
     	throw new IllegalArgumentException("Cedula invalida.");
     } else if (!Pattern.matches("[0-9]{10}", nin)) {
     	throw new IllegalArgumentException("Cedula invalida.");
+    } else if(!nin.startsWith("402") && !nin.startsWith("442")  && !nin.startsWith("001")){
+    	throw new IllegalArgumentException("Cedula invalida.");
     }
 
     value = nin;
