@@ -15,6 +15,10 @@ public final class DopNationalIdentificationNumber {
   public DopNationalIdentificationNumber(final String nin) {
     if (nin == null) {
       throw new NullPointerException("Get to work.");
+    } else if (nin.isBlank()) {
+    	throw new IllegalArgumentException("no especios en blanco");
+    } else if (nin.length() < 11 || nin.length() > 11) {
+    	throw new IllegalArgumentException("Cedula invalida.");
     }
 
     value = nin;

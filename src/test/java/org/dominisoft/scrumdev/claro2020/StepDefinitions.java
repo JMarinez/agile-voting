@@ -84,7 +84,7 @@ public final class StepDefinitions {
 
   @Before
   public void beforeEach() {
-    final FirefoxOptions options = new FirefoxOptions().setHeadless(false);
+    final FirefoxOptions options = new FirefoxOptions().setHeadless(true);
     driver = new FirefoxDriver(options);
 
 //		ChromeOptions options = new ChromeOptions().setHeadless(true);
